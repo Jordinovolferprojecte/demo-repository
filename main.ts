@@ -3,7 +3,7 @@ import { Game } from "./game";
 import { View } from "./view";
 
 const view = new View();
-const game = new Game("hola ayoub");
+const game = new Game();
 const controller = new Controller(game, view);
 
 controller.init();
