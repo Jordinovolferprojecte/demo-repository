@@ -1,4 +1,4 @@
-export class Jugador {
+export class jugador {
     private _name: string;
 
     constructor(name: string) {
