@@ -9,4 +9,12 @@ export class Controller {
         this._joc = joc;
         this._view = view;
     }
-}
+
+    public iniciar(): void {
+        this._joc.inicijoc();
+    }
+
+    private reiniciar(): void {
+        this._joc.reiniciarjoc();
+    }
+}   
