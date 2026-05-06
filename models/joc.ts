@@ -1,3 +1,5 @@
+import { jugador } from "./jugador";
+
 export class Joc {
 
     private _jugador: jugador;

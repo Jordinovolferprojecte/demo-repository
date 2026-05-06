@@ -7,8 +7,8 @@ const Cavaller: characters = new characters("Cavaller", 4, 2, 2);
 const Explosiu: characters = new characters("Explosiu", 2, 7, 0);
 const Golem: characters = new characters("Golem", 3, 1, 5);
 const Exodia: characters = new characters("Exodia", 10, 10, 0);
-const Saitama: characters = new characters("One Punch Man", 3, 11, 3);
-
+const Zurullin: characters = new characters("Zurullin", 1, 0, 0);
+const totselspersonatges: characters[] = [Paladi, Magic, Arquer, Cavaller, Explosiu, Golem];
 
 
 export class baralla {
@@ -21,5 +21,34 @@ export class baralla {
 
     get getBaralla(): characters[] {
         return this._baralla;
+    }
+
+    public iniciarBaralla(): void {
+
+        for (let i = 0; i < 3; i++) {
+
+            let personatge = Zurullin;
+            let aleatori = Math.floor(Math.random() * 7) + 1;
+
+            if (aleatori == 7) {
+                aleatori = Math.floor(Math.random() * 7) + 1;
+
+                if (aleatori == 7) {
+                    personatge = Exodia;
+                } else {
+                    personatge = totselspersonatges[aleatori];
+                }
+
+            } else {
+                personatge = totselspersonatges[aleatori];
+
+            }
+            this._baralla.push(personatge);
+
+        }
+    }
+
+    public borrarBaralla(): void {
+        this._baralla = [];
     }
 }
