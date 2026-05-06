@@ -48,12 +48,13 @@ export class characters {
 
     }
 
-    public malafectat(): void {
+    public malAfectat(): void {
 
     }
 
     public mostrarStats(): void {
 
     }
+
 
 }
