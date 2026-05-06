@@ -1,18 +1,24 @@
+import { characters } from "./characters";
 export class jugador {
-    private _name: string;
+    private _nom: string;
+    private _personatges: characters[] = [];
 
-    constructor(name: string) {
-        this._name = name;
+    constructor(nom: string) {
+        this._nom = nom;
     }
 
     // Getters i Setters
-    get name(): string {
-        return this._name;
+    get nom(): string {
+        return this._nom;
     }
 
-    set name(newName: string) {
-        this._name = newName;
+    set nom(newName: string) {
+        this._nom = newName;
     }
 
-    // Methods
+    get personatges(): characters[] {
+        return this._personatges;
+    }
+
+
 }

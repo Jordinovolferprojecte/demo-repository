@@ -43,4 +43,18 @@ export class characters {
     set defensa(defensa: number) {
         this._defensa = defensa;
     }
+
+    public mal(): void {
+
+    }
+
+    public malAfectat(): void {
+
+    }
+
+    public mostrarStats(): void {
+
+    }
+
+
 }

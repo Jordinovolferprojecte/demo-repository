@@ -1,5 +1,6 @@
 import { Joc } from "./models/joc";
 import { View } from "./View";
+import { characters } from "./models/characters";
 
 export class Controller {
     private _joc: Joc;
@@ -16,5 +17,17 @@ export class Controller {
 
     private reiniciar(): void {
         this._joc.reiniciarjoc();
+    }
+
+    public mal(): void {
+
+    }
+
+    public malafectat(): void {
+
+    }
+
+    public mostrarStats(): void {
+
     }
 }   
