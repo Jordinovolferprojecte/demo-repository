@@ -17,4 +17,16 @@ export class Controller {
     private reiniciar(): void {
         this._joc.reiniciarjoc();
     }
+
+    public mal(): void {
+
+    }
+
+    public malafectat(): void {
+
+    }
+
+    public mostrarStats(): void {
+
+    }
 }   
