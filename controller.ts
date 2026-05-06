@@ -1,5 +1,5 @@
 import { Joc } from "./models/joc";
-import { View } from "./view";
+import { View } from "./View";
 
 export class Controller {
     private _joc: Joc;
