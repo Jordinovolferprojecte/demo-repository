@@ -22,18 +22,4 @@ export class jugador {
 
 
     // Methods
-
-    public setEquip(equip: characters[]): void {
-        this._personatges = equip;
-    }
-
-    // Comprovar si al jugador li queden personatges vius
-    public tePersonatgesVius(): boolean {
-        for (let personatge of this._personatges) {
-            if (personatge.vida > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
