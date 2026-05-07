@@ -1,4 +1,4 @@
-import { characters } from "./characters";
+import { characters } from "./Characters";
 
 const Paladi: characters = new characters("Paladi", 5, 1, 3);
 const Magic: characters = new characters("Magic", 3, 4, 2);
