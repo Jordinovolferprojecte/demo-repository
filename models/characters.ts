@@ -4,6 +4,8 @@ export class characters {
     private _atac: number;
     private _defensa: number;
 
+
+
     constructor(nom: string, vida: number, atac: number, defensa: number) {
         this._nom = nom;
         this._vida = vida;
