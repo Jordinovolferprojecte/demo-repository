@@ -41,25 +41,6 @@ export class View {
 
     public render(joc: Joc): void {
 
-        //Netejer pantalla
-        this._divPlayer1.innerHTML = "";
-        this._divPlayer2.innerHTML = "";
-
-        // Render player 1
-
-        this.renderCharacters(
-            joc.player1.personatges,
-            this._divPlayer1
-        );
-
-        // Render player 2
-        this.renderCharacters(
-            joc.player2.personatges,
-            this._divPlayer2
-        );
-
-
-
     }
 
     private renderCharecters(Charecters: characters): void {
