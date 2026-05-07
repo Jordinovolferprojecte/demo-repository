@@ -44,17 +44,5 @@ export class characters {
         this._defensa = defensa;
     }
 
-    public mal(): void {
-
-    }
-
-    public malAfectat(): void {
-
-    }
-
-    public mostrarStats(): void {
-
-    }
-
 
 }
