@@ -44,5 +44,4 @@ export class characters {
         this._defensa = defensa;
     }
 
-
 }

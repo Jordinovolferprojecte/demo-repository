@@ -1,4 +1,4 @@
-import { characters } from "./characters";
+import { characters } from "./Characters";
 export class jugador {
     private _nom: string;
     private _personatges: characters[] = [];

@@ -1,6 +1,6 @@
-import { Joc } from "./models/joc";
+import { Joc } from "./models/Joc";
 import { View } from "./View";
-import { characters } from "./models/characters";
+import { characters } from "./models/Characters";
 
 export class Controller {
     private _joc: Joc;
