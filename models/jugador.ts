@@ -1,10 +1,12 @@
-import { characters } from "./Characters";
+import { baralla } from "./baralla";
+import { characters } from "./characters";
 export class jugador {
     private _nom: string;
-    private _personatges: characters[] = [];
+    private _personatges: baralla;
 
     constructor(nom: string) {
         this._nom = nom;
+        this._personatges = new baralla();
     }
 
     // Getters i Setters
@@ -16,8 +18,12 @@ export class jugador {
         this._nom = newName;
     }
 
-    get personatges(): characters[] {
+    get personatges(): baralla {
         return this._personatges;
+    }
+
+    public ReiniciarBaralla(): void {
+        this._personatges.borrarBaralla();
     }
 
 
