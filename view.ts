@@ -1,4 +1,4 @@
-import { characters } from "./models/characters";
+import { characters } from "./models/Characters";
 import { Joc } from "./models/Joc";
 
 export class View {
