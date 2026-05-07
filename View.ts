@@ -50,8 +50,4 @@ export class View {
     private renderCharecter(Charecter: characters): void {
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> cc4f5b689beb55a05cb89f8de9d172e697281d8c

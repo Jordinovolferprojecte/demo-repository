@@ -14,7 +14,6 @@ const totselspersonatges: characters[] = [Paladi, Magic, Arquer, Cavaller, Explo
 export class baralla {
 
     private _baralla: characters[];
-
     constructor() {
         this._baralla = [];
     }
