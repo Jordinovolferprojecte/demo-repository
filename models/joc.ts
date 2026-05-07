@@ -1,4 +1,4 @@
-import { jugador } from "./jugador";
+import { jugador } from "./Jugador";
 import { baralla } from "./baralla";
 import { characters } from "./characters";
 
