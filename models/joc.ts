@@ -47,4 +47,6 @@ export class Joc {
         let PersonatgeDonat: characters | undefined = this._baralla.iniciarBaralla();
         if (PersonatgeDonat) jugador.personatges.push(PersonatgeDonat);
     }
+
+
 }

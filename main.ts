@@ -1,6 +1,6 @@
 import { Controller } from "./controller";
-import { Joc } from "./models/Joc";
-import { View } from "./View";
+import { Joc } from "./models/joc";
+import { View } from "./view";
 
 const view = new View();
 const joc = new Joc("ayoub", "gerald");

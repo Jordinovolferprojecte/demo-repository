@@ -1,10 +1,11 @@
-import { Joc } from "./models/Joc";
-import { View } from "./View";
+import { Joc } from "./models/joc";
+import { View } from "./view";
 import { characters } from "./models/Characters";
 
 export class Controller {
     private _joc: Joc;
     private _view: View;
+    private _turn: Boolean = false; //Detecta si el turn es per al jugador1(false) o jugador2(true)
 
     constructor(joc: Joc, view: View) {
         this._joc = joc;
