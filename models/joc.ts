@@ -1,6 +1,6 @@
 import { jugador } from "./jugador";
 import { baralla } from "./baralla";
-import { characters } from "./characters";
+import { characters } from "./Characters";
 
 export class Joc {
 
