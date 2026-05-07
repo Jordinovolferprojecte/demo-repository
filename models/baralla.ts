@@ -23,7 +23,7 @@ export class baralla {
         return this._baralla;
     }
 
-    public iniciarBaralla(): void {
+    public iniciarBaralla(): characters | undefined {
 
         for (let i = 0; i < 3; i++) {
 
@@ -43,9 +43,13 @@ export class baralla {
                 personatge = totselspersonatges[aleatori];
 
             }
-            this._baralla.push(personatge);
+            return personatge;
 
         }
+    }
+
+    public push(card: characters): void {
+        this._baralla.push(card);
     }
 
     public borrarBaralla(): void {
