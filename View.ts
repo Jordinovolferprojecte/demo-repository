@@ -1,3 +1,4 @@
+import { baralla } from "./models/baralla";
 import { characters } from "./models/Characters";
 import { Joc } from "./models/joc";
 
@@ -39,12 +40,39 @@ export class View {
         return this._btn2;
     }
 
+
+    //activa els metodes que creen i ensenyen les cartes i les aplica a cada jugador
     public render(joc: Joc): void {
+
+        let jugador1Cartes: baralla = joc.jugador.personatges;
+        this.renderPersonatges(jugador1Cartes.getBaralla, this._divPlayer1);
+
+        let jugador2Cartes: baralla = joc.jugador2.personatges;
+        this.renderPersonatges(jugador2Cartes.getBaralla, this._divPlayer2);
 
     }
 
-    private renderPersonatges(Charecters: characters): void {
+    //Metode que tria la carta correcta i la posa en el div del jugador corresponent
+    private renderPersonatges(Characters: characters[], divContainer: HTMLElement): void {
+        divContainer.innerHTML = " ";
 
+        Characters.forEach((character) => {
+            const el = this.renderPersonatge(character);
+            divContainer.appendChild(el);
+        });
+
+    }
+
+
+    //Metode que crea visualment la carta
+    private renderPersonatge(character: characters): HTMLElement {
+
+        const el = document.createElement('div');
+        el.classList.add('character');
+
+        //falta inserir que cada personatge tingui una imatge associada
+
+        return el;
     }
 
 
