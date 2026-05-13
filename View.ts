@@ -43,11 +43,9 @@ export class View {
 
     }
 
-    private renderCharecters(Charecters: characters): void {
+    private renderPersonatges(Charecters: characters): void {
 
     }
 
-    private renderCharecter(Charecter: characters): void {
 
-    }
 }
