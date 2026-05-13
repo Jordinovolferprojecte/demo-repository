@@ -7,6 +7,7 @@ export class Joc {
     private _jugador: jugador;
     private _jugador2: jugador;
     private _baralla: baralla;
+    private _torn: jugador;
 
 
     constructor(nomjugador: string, nomjugador2: string) {
@@ -14,6 +15,7 @@ export class Joc {
         this._jugador2 = new jugador(nomjugador2);
         this._baralla = new baralla();
         this._baralla.iniciarBaralla();
+        this._torn = this._jugador;
     }
 
     get jugador(): jugador {
@@ -27,6 +29,13 @@ export class Joc {
     }
     set jugador2(p: jugador) {
         this._jugador2 = p;
+    }
+
+    get torn(): jugador {
+        return this._torn;
+    }
+    set torn(p: jugador) {
+        this._torn = p;
     }
 
     public inicijoc(): void {

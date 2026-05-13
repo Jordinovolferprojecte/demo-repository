@@ -19,15 +19,36 @@ export class Controller {
         this._joc.reiniciarjoc();
     }
 
-    public mal(): void {
+    public start(): void {
+        this._joc.donarPersonatge(this._joc.jugador);
+        this._joc.donarPersonatge(this._joc.jugador2);
 
+        this._view.render(this._joc);
     }
 
-    public malafectat(): void {
+    public lluitar(): void {
 
-    }
+        const atacant = this._joc.torn;
+        const defensor = atacant === this._joc.jugador ? this._joc.jugador2 : this._joc.jugador;
 
-    public mostrarStats(): void {
+        const personatgeAtacant = atacant.personatges.getBaralla[0];
+        const personatgeDefensor = defensor.personatges.getBaralla[0];
 
+        const dany = personatgeAtacant.atac - personatgeDefensor.defensa;
+
+        personatgeDefensor.vida -= dany;
+
+        if (personatgeDefensor.vida <= 0) {
+            defensor.personatges.getBaralla.shift();
+        }
+
+        if (defensor.personatges.getBaralla.length === 0) {
+            console.log("Ha perdut! El joc acaba");
+            return;
+        }
+
+        this._joc.torn = defensor;
+
+        this._view.render(this._joc);
     }
 }   
