@@ -13,18 +13,14 @@ export class Controller {
 
     public iniciar(): void {
         this._joc.inicijoc();
+        this._view.render(this._joc);
     }
 
     private reiniciar(): void {
         this._joc.reiniciarjoc();
     }
 
-    public start(): void {
-        this._joc.donarPersonatge(this._joc.jugador);
-        this._joc.donarPersonatge(this._joc.jugador2);
 
-        this._view.render(this._joc);
-    }
 
     public lluitar(): void {
 

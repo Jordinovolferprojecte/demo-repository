@@ -42,6 +42,8 @@ export class Joc {
 
         this.donarPersonatge(this._jugador);
         this.donarPersonatge(this._jugador2);
+
+
     }
 
     public reiniciarjoc(): void {
