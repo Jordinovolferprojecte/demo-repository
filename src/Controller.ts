@@ -9,12 +9,16 @@ export class Controller {
     constructor(joc: Joc, view: View) {
         this._joc = joc;
         this._view = view;
+        this.bindEvents();
     }
 
     public iniciar(): void {
         this._joc.inicijoc();
         this._view.render(this._joc);
-        this.startLluita();
+    }
+
+    private bindEvents(): void {
+        this._view.btnLluitar.addEventListener("click", () => this.startLluita());
     }
 
     private startLluita(): void {
