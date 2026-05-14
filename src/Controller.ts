@@ -14,6 +14,19 @@ export class Controller {
     public iniciar(): void {
         this._joc.inicijoc();
         this._view.render(this._joc);
+        this.startLluita();
+    }
+
+    private startLluita(): void {
+        const fight = () => {
+            if (this._joc.jugador.personatges.getBaralla.length === 0 || this._joc.jugador2.personatges.getBaralla.length === 0) {
+                console.log("Joc acabat");
+                return;
+            }
+            this.lluitar();
+            setTimeout(fight, 1000); // Wait 1 second between fights
+        };
+        fight();
     }
 
     private reiniciar(): void {
@@ -30,7 +43,7 @@ export class Controller {
         const personatgeAtacant = atacant.personatges.getBaralla[0];
         const personatgeDefensor = defensor.personatges.getBaralla[0];
 
-        const dany = personatgeAtacant.atac - personatgeDefensor.defensa;
+        const dany = Math.max(1, personatgeAtacant.atac - personatgeDefensor.defensa);
 
         personatgeDefensor.vida -= dany;
 
