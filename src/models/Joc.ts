@@ -39,9 +39,11 @@ export class Joc {
     }
 
     public inicijoc(): void {
-
-        this.donarPersonatge(this._jugador);
-        this.donarPersonatge(this._jugador2);
+        let i: number = 3;
+        for (; i >= 1; i--) {
+            this.donarPersonatge(this._jugador);
+            this.donarPersonatge(this._jugador2);
+        }
 
 
     }
