@@ -73,7 +73,7 @@ export class View {
         //falta inserir que cada personatge tingui una imatge associada
 
 
-        el.innerHTML = "Nom: " + character.nom + "Vida: " + character.vida + "Atac: " + character.atac + "Defensa: " + character.defensa;
+        el.innerHTML = "Nom: " + character.nom + " Vida: " + character.vida + " Atac: " + character.atac + " Defensa: " + character.defensa;
         return el;
     }
 
