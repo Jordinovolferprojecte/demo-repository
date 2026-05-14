@@ -1,4 +1,4 @@
-import { Joc } from "./models/joc";
+import { Joc } from "./models/Joc";
 import { View } from "./View";
 
 export class Controller {

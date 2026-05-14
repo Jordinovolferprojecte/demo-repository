@@ -1,5 +1,5 @@
-import { Controller } from "./controller";
-import { Joc } from "./models/joc";
+import { Controller } from "./Controller";
+import { Joc } from "./models/Joc";
 import { View } from "./View";
 
 

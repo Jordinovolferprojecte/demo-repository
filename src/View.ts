@@ -1,6 +1,6 @@
 import { baralla } from "./models/baralla";
 import { characters } from "./models/characters";
-import { Joc } from "./models/joc";
+import { Joc } from "./models/Joc";
 
 export class View {
 
