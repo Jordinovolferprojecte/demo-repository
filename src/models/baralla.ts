@@ -27,11 +27,11 @@ export class baralla {
 
         let personatge = Zurullin;
         let aleatori = Math.floor(Math.random() * 7) + 1;
-        console.log("1: " + aleatori);
+
 
         if (aleatori == 7) {
             aleatori = Math.floor(Math.random() * 7) + 1;
-            console.log("2: " + aleatori);
+
             if (aleatori == 7) {
                 personatge = Exodia;
             } else {
@@ -42,7 +42,7 @@ export class baralla {
             personatge = totselspersonatges[aleatori - 1];
 
         }
-        console.log("personatge: " + personatge.nom)
+
         return personatge;
 
     }

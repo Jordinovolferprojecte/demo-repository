@@ -36,13 +36,19 @@ export class Controller {
 
 
     public lluitar(): void {
-        let aleatori1 = Math.floor(Math.random() * 3) + 1;
-        let aleatori2 = Math.floor(Math.random() * 3) + 1;
+        let length1 = this._joc.jugador.personatges.getBaralla.length;
+        let length2 = this._joc.jugador2.personatges.getBaralla.length;
+
+        let aleatori1 = Math.floor(Math.random() * length1) + 1;
+        let aleatori2 = Math.floor(Math.random() * length2) + 1;
         const atacant = this._joc.torn;
         const defensor = atacant === this._joc.jugador ? this._joc.jugador2 : this._joc.jugador;
 
-        const personatgeAtacant = atacant.personatges.getBaralla[aleatori1];
-        const personatgeDefensor = defensor.personatges.getBaralla[aleatori2];
+        const personatgeAtacant = atacant.personatges.getBaralla[aleatori1 - 1];
+        const personatgeDefensor = defensor.personatges.getBaralla[aleatori2 - 1];
+
+        console.log("1: " + aleatori1);
+        console.log("2: " + aleatori2);
 
         const dany = Math.max(1, personatgeAtacant.atac - personatgeDefensor.defensa);
 
