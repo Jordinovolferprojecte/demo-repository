@@ -19,12 +19,14 @@ export class View {
     // Botons
     private _btn1: HTMLButtonElement;
     private _btn2: HTMLButtonElement;
+    private _btnLluitar: HTMLButtonElement;
 
     constructor() {
         this._divPlayer1 = document.getElementById("divPlayer1Cards") as HTMLDivElement;
         this._divPlayer2 = document.getElementById("divPlayer2Cards") as HTMLDivElement;
         this._btn1 = document.getElementById("btn1") as HTMLButtonElement;
         this._btn2 = document.getElementById("btn2") as HTMLButtonElement;
+        this._btnLluitar = document.getElementById("btnLluitar") as HTMLButtonElement;
         this._divPlayer1Points = document.getElementById("divPlayer1Points") as HTMLDivElement;
         this._divPlayer2Points = document.getElementById("divPlayer2Points") as HTMLDivElement;
         this._divMatchesWonPlayer1 = document.getElementById("divMatchesWonPlayer1") as HTMLDivElement;
@@ -38,6 +40,10 @@ export class View {
 
     get btn2(): HTMLButtonElement {
         return this._btn2;
+    }
+
+    get btnLluitar(): HTMLButtonElement {
+        return this._btnLluitar;
     }
 
 
