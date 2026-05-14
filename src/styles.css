@@ -30,14 +30,44 @@ body {
 
 h1 {
     text-align: center;
-    padding: 30px 20px;
-    font-size: 3em;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-    letter-spacing: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 35px 20px;
+    font-size: 3.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: transparent;
+    background: linear-gradient(90deg, #ffd970, #ffb347, #d4af37);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 18px rgba(255, 184, 77, 0.3), 0 6px 20px rgba(0, 0, 0, 0.45);
     margin-bottom: 20px;
-    border-bottom: 3px solid #c0a080;
-    color: #d4af37;
+    position: relative;
+    animation: titleGlow 8s ease infinite;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 180px;
+    height: 5px;
+    margin: 16px auto 0;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.95);
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.65);
+}
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 18px rgba(255, 184, 77, 0.35), 0 6px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    50% {
+        background-position: 100% 50%;
+        text-shadow: 0 0 28px rgba(255, 184, 77, 0.55), 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
 }
 
 .game-container {
