@@ -18,19 +18,7 @@ export class Controller {
     }
 
     private bindEvents(): void {
-        this._view.btnLluitar.addEventListener("click", () => this.startLluita());
-    }
-
-    private startLluita(): void {
-        const fight = () => {
-            if (this._joc.jugador.personatges.getBaralla.length === 0 || this._joc.jugador2.personatges.getBaralla.length === 0) {
-                console.log("Joc acabat");
-                return;
-            }
-            this.lluitar();
-            setTimeout(fight, 1000); // Wait 1 second between fights
-        };
-        fight();
+        this._view.btnLluitar.addEventListener("click", () => this.lluitar());
     }
 
     private reiniciar(): void {
