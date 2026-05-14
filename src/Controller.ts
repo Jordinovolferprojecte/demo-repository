@@ -36,8 +36,8 @@ export class Controller {
         const atacant = this._joc.torn;
         const defensor = atacant === this._joc.jugador ? this._joc.jugador2 : this._joc.jugador;
 
-        const personatgeAtacant = atacant.personatges.getBaralla[aleatori1 - 1];
-        const personatgeDefensor = defensor.personatges.getBaralla[aleatori2 - 1];
+        const personatgeAtacant = atacant.personatges.getBaralla[aleatori2 - 1];
+        const personatgeDefensor = defensor.personatges.getBaralla[aleatori1 - 1];
 
         console.log("1: " + aleatori1);
         console.log("2: " + aleatori2);
