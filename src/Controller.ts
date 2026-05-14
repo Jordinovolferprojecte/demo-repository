@@ -23,12 +23,13 @@ export class Controller {
 
 
     public lluitar(): void {
-
+        let aleatori1 = Math.floor(Math.random() * 3) + 1;
+        let aleatori2 = Math.floor(Math.random() * 3) + 1;
         const atacant = this._joc.torn;
         const defensor = atacant === this._joc.jugador ? this._joc.jugador2 : this._joc.jugador;
 
-        const personatgeAtacant = atacant.personatges.getBaralla[0];
-        const personatgeDefensor = defensor.personatges.getBaralla[0];
+        const personatgeAtacant = atacant.personatges.getBaralla[aleatori1];
+        const personatgeDefensor = defensor.personatges.getBaralla[aleatori2];
 
         const dany = personatgeAtacant.atac - personatgeDefensor.defensa;
 
