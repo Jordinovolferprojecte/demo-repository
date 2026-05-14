@@ -3,13 +3,15 @@ export class characters {
     private _vida: number;
     private _atac: number;
     private _defensa: number;
+    private _imatge: string;
 
 
-    constructor(nom: string, vida: number, atac: number, defensa: number) {
+    constructor(nom: string, vida: number, atac: number, defensa: number, imatge: string) {
         this._nom = nom;
         this._vida = vida;
         this._atac = atac;
         this._defensa = defensa;
+        this._imatge = imatge;
 
     }
 
@@ -43,6 +45,14 @@ export class characters {
 
     set defensa(defensa: number) {
         this._defensa = defensa;
+    }
+
+    get imatge(): string {
+        return this._imatge;
+    }
+
+    set imatge(imatge: string) {
+        this._imatge = imatge;
     }
 
 }

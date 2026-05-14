@@ -70,10 +70,22 @@ export class View {
         const el = document.createElement('div');
         el.classList.add('character');
 
-        //falta inserir que cada personatge tingui una imatge associada
+        // Crear la imatge del personatge
+        const img = document.createElement('img');
+        img.src = character.imatge;
+        img.alt = character.nom;
+        img.classList.add('character-image');
 
+        // Crear el contenidor de l'estadística
+        const stats = document.createElement('div');
+        stats.classList.add('character-stats');
+        stats.innerHTML = `<p><strong>${character.nom}</strong></p>
+                          <p>Vida: ${character.vida}</p>
+                          <p>Atac: ${character.atac}</p>
+                          <p>Defensa: ${character.defensa}</p>`;
 
-        el.innerHTML = "Nom: " + character.nom + "Vida: " + character.vida + "Atac: " + character.atac + "Defensa: " + character.defensa;
+        el.appendChild(img);
+        el.appendChild(stats);
         return el;
     }
 
