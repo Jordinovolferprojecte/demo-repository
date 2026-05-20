@@ -12,6 +12,7 @@ export class Joc {
     private _matchesWonPlayer2: number;
 
 
+    // Crea un nou joc amb dos jugadors i prepara la baralla inicial.
     constructor(nomjugador: string, nomjugador2: string) {
         this._jugador = new jugador(nomjugador);
         this._jugador2 = new jugador(nomjugador2);
@@ -42,22 +43,27 @@ export class Joc {
         this._torn = p;
     }
 
+    // Retorna el nombre de partides guanyades pel primer jugador.
     public matchesWonPlayer(): number {
         return this._matchesWonPlayer;
     }
 
+    // Retorna el nombre de partides guanyades pel segon jugador.
     public matchesWonDealer(): number {
         return this._matchesWonPlayer2;
     }
 
+    // Incrementa el marcador de victòries del primer jugador.
     public playerWins(): void {
         this._matchesWonPlayer++;
     }
 
+    // Incrementa el marcador de victòries del segon jugador.
     public dealerWins(): void {
         this._matchesWonPlayer2++;
     }
 
+    // Inicia el joc donant tres cartes a cada jugador.
     public inicijoc(): void {
         let i: number = 3;
         for (; i >= 1; i--) {
@@ -68,6 +74,7 @@ export class Joc {
 
     }
 
+    // Reinicia el joc netejant les baralles i repartint noves cartes.
     public reiniciarjoc(): void {
 
         this._jugador.ReiniciarBaralla();
@@ -75,6 +82,7 @@ export class Joc {
         this.inicijoc();
     }
 
+    // Dona una carta aleatòria al jugador indicat.
     public donarPersonatge(jugador: jugador): void {
 
         let PersonatgeDonat: characters | undefined = this._baralla.iniciarBaralla();

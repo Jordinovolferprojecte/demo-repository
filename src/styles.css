@@ -128,6 +128,21 @@ h1::after {
     margin: 0;
 }
 
+#turnIndicator {
+    margin: 0 auto 20px;
+    padding: 14px 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #f8f3d4;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
 @keyframes winnerAppear {
     0% {
         opacity: 0;
@@ -304,6 +319,13 @@ button:hover::before {
 
 button:active {
     transform: translateY(-1px);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #b8a051 0%, #a0883c 100%);
 }
 
 @media (max-width: 768px) {

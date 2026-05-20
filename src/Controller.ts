@@ -5,23 +5,26 @@ export class Controller {
     private _joc: Joc;
     private _view: View;
 
-
+    // Constructor del controlador: rep el model i la vista i llig els esdeveniments.
     constructor(joc: Joc, view: View) {
         this._joc = joc;
         this._view = view;
         this.bindEvents();
     }
 
+    // Inicia el joc i renderitza l'estat inicial.
     public iniciar(): void {
         this._joc.inicijoc();
         this._view.render(this._joc);
     }
 
+    // Enllaça els botons i altres events de la vista amb la lògica del controlador.
     private bindEvents(): void {
         this._view.btnLluitar.addEventListener("click", () => this.lluitar());
     }
 
 
+    // Executa un torn de lluita, calcula el dany i actualitza les cartes i el torn.
     public lluitar(): void {
         const atacant = this._joc.torn;
         const defensor = atacant === this._joc.jugador ? this._joc.jugador2 : this._joc.jugador;
@@ -41,12 +44,6 @@ export class Controller {
 
         const attackerIsPlayer1 = atacant === this._joc.jugador;
 
-
-        if (defensor.personatges.getBaralla.length === 0) {
-            console.log("Ha perdut! El joc acaba");
-            this._view.JugadorGuanya(atacant);
-            return;
-        }
         this._view.animateAttack(attackerIsPlayer1, aleatoriAt, aleatoriDef, dany, () => {
             // aplica el mal i no deixa que el valor sigui negatiu 
             personatgeDefensor.vida = Math.max(0, personatgeDefensor.vida - dany);
@@ -58,6 +55,14 @@ export class Controller {
 
             if (defensor.personatges.getBaralla.length === 0) {
                 console.log("Ha perdut! El joc acaba");
+                if (attackerIsPlayer1) {
+                    this._joc.playerWins();
+                } else {
+                    this._joc.dealerWins();
+                }
+                this._view.render(this._joc);
+                this._view.showWinner(`${atacant.nom} ha ganado`);
+                this._view.setFightButtonEnabled(false);
                 return;
             }
 

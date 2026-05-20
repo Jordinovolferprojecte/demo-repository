@@ -14,14 +14,17 @@ const totselspersonatges: characters[] = [Paladi, Magic, Arquer, Cavaller, Explo
 export class baralla {
 
     private _baralla: characters[];
+    // Crea una baralla buida per acumular cartes.
     constructor() {
         this._baralla = [];
     }
 
+    // Retorna la llista actual de cartes de la baralla.
     get getBaralla(): characters[] {
         return this._baralla;
     }
 
+    // Retorna una carta aleatòria, amb una petita probabilitat d'aconseguir Exodia.
     public iniciarBaralla(): characters | undefined {
 
 
@@ -47,10 +50,12 @@ export class baralla {
 
     }
 
+    // Afegeix una carta a la baralla.
     public push(card: characters): void {
         this._baralla.push(card);
     }
 
+    // Neteja totes les cartes de la baralla.
     public borrarBaralla(): void {
         this._baralla = [];
     }

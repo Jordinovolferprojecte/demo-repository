@@ -8,6 +8,7 @@ export class View {
     // Zones cartes 
     private _divPlayer1: HTMLDivElement;
     private _divPlayer2: HTMLDivElement;
+    private _divTurn: HTMLDivElement;
 
 
     // Contador partides guanyades
@@ -21,9 +22,11 @@ export class View {
     private _btn2: HTMLButtonElement;
     private _btnLluitar: HTMLButtonElement;
 
+    // Constructor de la vista: obté referències als elements HTML que cal manipular.
     constructor() {
         this._divPlayer1 = document.getElementById("divPlayer1Cards") as HTMLDivElement;
         this._divPlayer2 = document.getElementById("divPlayer2Cards") as HTMLDivElement;
+        this._divTurn = document.getElementById("turnIndicator") as HTMLDivElement;
         this._btn1 = document.getElementById("btn1") as HTMLButtonElement;
         this._btn2 = document.getElementById("btn2") as HTMLButtonElement;
         this._btnLluitar = document.getElementById("btnLluitar") as HTMLButtonElement;
@@ -49,11 +52,12 @@ export class View {
         return this._btnLluitar;
     }
 
-
-    //activa els metodes que creen i ensenyen les cartes i les aplica a cada jugador
+    // Renderitza l'estat del joc: cartes, punts, torn i ocultació de missatges anteriors.
     public render(joc: Joc): void {
-
-
+        this.hideWinner();
+        if (this._divTurn) {
+            this._divTurn.textContent = `Turno de ${joc.torn.nom}`;
+        }
 
         this._divMatchesWonPlayer1.innerHTML = joc.matchesWonPlayer().toString();
         this._divMatchesWonPlayer2.innerHTML = joc.matchesWonDealer().toString();
@@ -68,6 +72,7 @@ export class View {
 
 
     //Metode que tria la carta correcta i la posa en el div del jugador corresponent
+    // Renderitza la llista de cartes dins del contenidor corresponent.
     private renderPersonatges(Characters: characters[], divContainer: HTMLElement): void {
         divContainer.innerHTML = " ";
 
@@ -82,7 +87,7 @@ export class View {
     }
 
 
-    //Metode que crea visualment la carta
+    // Crea el DOM d'una carta amb la seva imatge i estadístiques.
     private renderPersonatge(character: characters): HTMLElement {
 
         const el = document.createElement('div');
@@ -107,14 +112,15 @@ export class View {
         return el;
     }
 
+    // Mostra un missatge de guanyador quan un jugador ha vençut.
     public JugadorGuanya(jugador: jugador): void {
 
         this._divGuanyador.innerHTML = `<p><strong>${jugador.nom} és el guanyador</strong><p>`;
         this._divGuanyador.style.visibility = "visible";
 
     }
-    // Animar ataque entre cartas: attackerIsPlayer1 indica qué jugador ataca,
-    // attackerIndex y defenderIndex son índices dentro de sus baralles.
+
+    // Animació de l'atac entre dues cartes i callback quan acaba.
     public animateAttack(attackerIsPlayer1: boolean, attackerIndex: number, defenderIndex: number, damage: number, callback: () => void): void {
         const attackerDiv = attackerIsPlayer1 ? this._divPlayer1 : this._divPlayer2;
         const defenderDiv = attackerIsPlayer1 ? this._divPlayer2 : this._divPlayer1;
@@ -148,6 +154,29 @@ export class View {
             if (dmg.parentElement) dmg.parentElement.removeChild(dmg);
             callback();
         }, totalDuration);
+    }
+
+    // Mostra un missatge genèric de guanyador amb el text proporcionat.
+    public showWinner(winnerMessage: string): void {
+        if (!this._divGuanyador) return;
+        this._divGuanyador.textContent = winnerMessage;
+        this._divGuanyador.style.visibility = 'visible';
+        this._divGuanyador.style.opacity = '1';
+        this._divGuanyador.style.transform = 'translate(-50%, 0) scale(1)';
+    }
+
+    // Amaga el missatge de guanyador i restableix l'estat del div corresponent.
+    public hideWinner(): void {
+        if (!this._divGuanyador) return;
+        this._divGuanyador.textContent = '';
+        this._divGuanyador.style.visibility = 'hidden';
+        this._divGuanyador.style.opacity = '0';
+        this._divGuanyador.style.transform = 'translate(-50%, -10px) scale(0.98)';
+    }
+
+    // Activa o desactiva el botó de lluita segons toqui.
+    public setFightButtonEnabled(enabled: boolean): void {
+        this._btnLluitar.disabled = !enabled;
     }
 
 
