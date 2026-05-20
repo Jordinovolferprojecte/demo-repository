@@ -8,6 +8,8 @@ export class Joc {
     private _jugador2: jugador;
     private _baralla: baralla;
     private _torn: jugador;
+    private _matchesWonPlayer: number;
+    private _matchesWonPlayer2: number;
 
 
     constructor(nomjugador: string, nomjugador2: string) {
@@ -16,6 +18,8 @@ export class Joc {
         this._baralla = new baralla();
         this._baralla.iniciarBaralla();
         this._torn = this._jugador;
+        this._matchesWonPlayer = 0;
+        this._matchesWonPlayer2 = 0;
     }
 
     get jugador(): jugador {
@@ -36,6 +40,22 @@ export class Joc {
     }
     set torn(p: jugador) {
         this._torn = p;
+    }
+
+    public matchesWonPlayer(): number {
+        return this._matchesWonPlayer;
+    }
+
+    public matchesWonDealer(): number {
+        return this._matchesWonPlayer2;
+    }
+
+    public playerWins(): void {
+        this._matchesWonPlayer++;
+    }
+
+    public dealerWins(): void {
+        this._matchesWonPlayer2++;
     }
 
     public inicijoc(): void {
