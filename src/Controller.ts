@@ -42,6 +42,11 @@ export class Controller {
         const attackerIsPlayer1 = atacant === this._joc.jugador;
 
 
+        if (defensor.personatges.getBaralla.length === 0) {
+            console.log("Ha perdut! El joc acaba");
+            this._view.JugadorGuanya(atacant);
+            return;
+        }
         this._view.animateAttack(attackerIsPlayer1, aleatoriAt, aleatoriDef, dany, () => {
             // aplica el mal i no deixa que el valor sigui negatiu 
             personatgeDefensor.vida = Math.max(0, personatgeDefensor.vida - dany);
