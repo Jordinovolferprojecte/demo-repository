@@ -11,6 +11,7 @@ export class View {
 
 
     // Contador partides guanyades
+
     private _divMatchesWonPlayer1: HTMLDivElement;
     private _divMatchesWonPlayer2: HTMLDivElement;
     private _divGuanyador: HTMLDivElement;
@@ -26,6 +27,7 @@ export class View {
         this._btn1 = document.getElementById("btn1") as HTMLButtonElement;
         this._btn2 = document.getElementById("btn2") as HTMLButtonElement;
         this._btnLluitar = document.getElementById("btnLluitar") as HTMLButtonElement;
+
         this._divMatchesWonPlayer1 = document.getElementById("divMatchesWonPlayer1") as HTMLDivElement;
         this._divMatchesWonPlayer2 = document.getElementById("divMatchesWonPlayer2") as HTMLDivElement;
         this._divGuanyador = document.getElementById("guanyador") as HTMLDivElement;
@@ -126,7 +128,7 @@ export class View {
         }
 
         // small translate to indicate attack direction
-        attackerEl.style.transition = 'transform 20s ease';
+        attackerEl.style.transition = 'transform 0.35s ease';
         attackerEl.style.transform = attackerIsPlayer1 ? 'translateX(20px) scale(1.03)' : 'translateX(-20px) scale(1.03)';
 
         // defender hit effect
@@ -138,7 +140,7 @@ export class View {
         dmg.textContent = `-${damage}`;
         defenderEl.appendChild(dmg);
 
-        const totalDuration = 1400;
+        const totalDuration = 2000;
         setTimeout(() => {
             attackerEl.style.transform = '';
             attackerEl.style.transition = '';

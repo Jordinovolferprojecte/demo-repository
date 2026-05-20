@@ -334,7 +334,7 @@ button:active {
 
 /* Attack / hit animations */
 .hit {
-    animation: hitShake 0.8s ease;
+    animation: hitShake 1.4s ease;
     box-shadow: 0 8px 24px rgba(255, 50, 50, 0.25);
     border-color: #ff6b6b;
 }
@@ -376,7 +376,7 @@ button:active {
     padding: 6px 10px;
     border-radius: 8px;
     pointer-events: none;
-    animation: damageUp 1.4s ease forwards;
+    animation: damageUp 1.8s ease forwards;
 }
 
 @keyframes damageUp {
@@ -385,13 +385,8 @@ button:active {
         transform: translate(-50%, 0);
     }
 
-    60% {
-        opacity: 1;
-        transform: translate(-50%, -16px);
-    }
-
     100% {
         opacity: 0;
-        transform: translate(-50%, -32px);
+        transform: translate(-50%, -24px);
     }
 }
