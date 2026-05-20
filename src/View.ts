@@ -1,6 +1,7 @@
 import { baralla } from "./models/baralla";
 import { characters } from "./models/characters";
 import { Joc } from "./models/Joc";
+import type { jugador } from "./models/Jugador";
 
 export class View {
 
@@ -8,13 +9,11 @@ export class View {
     private _divPlayer1: HTMLDivElement;
     private _divPlayer2: HTMLDivElement;
 
-    // Marcador punts
-    private _divPlayer1Points: HTMLDivElement;
-    private _divPlayer2Points: HTMLDivElement;
 
     // Contador partides guanyades
     private _divMatchesWonPlayer1: HTMLDivElement;
     private _divMatchesWonDealer2: HTMLDivElement;
+    private _divGuanyador: HTMLDivElement;
 
     // Botons
     private _btn1: HTMLButtonElement;
@@ -27,10 +26,12 @@ export class View {
         this._btn1 = document.getElementById("btn1") as HTMLButtonElement;
         this._btn2 = document.getElementById("btn2") as HTMLButtonElement;
         this._btnLluitar = document.getElementById("btnLluitar") as HTMLButtonElement;
-        this._divPlayer1Points = document.getElementById("divPlayer1Points") as HTMLDivElement;
-        this._divPlayer2Points = document.getElementById("divPlayer2Points") as HTMLDivElement;
         this._divMatchesWonPlayer1 = document.getElementById("divMatchesWonPlayer1") as HTMLDivElement;
         this._divMatchesWonDealer2 = document.getElementById("divMatchesWonPlayer2") as HTMLDivElement;
+        this._divGuanyador = document.getElementById("guanyador") as HTMLDivElement;
+        if (this._divGuanyador) {
+            this._divGuanyador.style.visibility = "hidden";
+        }
     }
 
     // Getters per als botons 
@@ -57,6 +58,7 @@ export class View {
         this.renderPersonatges(jugador2Cartes.getBaralla, this._divPlayer2);
 
     }
+
 
     //Metode que tria la carta correcta i la posa en el div del jugador corresponent
     private renderPersonatges(Characters: characters[], divContainer: HTMLElement): void {
@@ -95,19 +97,13 @@ export class View {
         return el;
     }
 
-    /*
-    getVidaDisplay(vida: number): string{
-        
-        return vida.toString();
-    }
-    getAtacDisplay(atac: number): string {
+    public JugadorGuanya(jugador: jugador): void {
 
-        return atac.toString();
-    }
-    getDefensaDisplay(defensa: number): string {
+        this._divGuanyador.innerHTML = `<p><strong>${jugador.nom} és el guanyador</strong><p>`;
+        this._divGuanyador.style.visibility = "visible";
 
-        return defensa.toString();
+
     }
-    */
+
 
 }

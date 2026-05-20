@@ -52,6 +52,7 @@ export class Controller {
 
         if (defensor.personatges.getBaralla.length === 0) {
             console.log("Ha perdut! El joc acaba");
+            this._view.JugadorGuanya(atacant);
             return;
         }
 
