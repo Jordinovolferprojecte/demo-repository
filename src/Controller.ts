@@ -21,42 +21,43 @@ export class Controller {
         this._view.btnLluitar.addEventListener("click", () => this.lluitar());
     }
 
-    private reiniciar(): void {
-        this._joc.reiniciarjoc();
-    }
-
-
 
     public lluitar(): void {
-        let length1 = this._joc.jugador.personatges.getBaralla.length;
-        let length2 = this._joc.jugador2.personatges.getBaralla.length;
-
-        let aleatori1 = Math.floor(Math.random() * length1) + 1;
-        let aleatori2 = Math.floor(Math.random() * length2) + 1;
         const atacant = this._joc.torn;
         const defensor = atacant === this._joc.jugador ? this._joc.jugador2 : this._joc.jugador;
 
-        const personatgeAtacant = atacant.personatges.getBaralla[aleatori2 - 1];
-        const personatgeDefensor = defensor.personatges.getBaralla[aleatori1 - 1];
+        const attacker = atacant.personatges.getBaralla.length;
+        const defender = defensor.personatges.getBaralla.length;
 
-        console.log("1: " + aleatori1);
-        console.log("2: " + aleatori2);
+        if (attacker === 0 || defender === 0) return;
+
+        const aleatoriAt = Math.floor(Math.random() * attacker);
+        const aleatoriDef = Math.floor(Math.random() * defender);
+
+        const personatgeAtacant = atacant.personatges.getBaralla[aleatoriAt];
+        const personatgeDefensor = defensor.personatges.getBaralla[aleatoriDef];
 
         const dany = Math.max(1, personatgeAtacant.atac - personatgeDefensor.defensa);
 
-        personatgeDefensor.vida -= dany;
+        const attackerIsPlayer1 = atacant === this._joc.jugador;
 
-        if (personatgeDefensor.vida <= 0) {
-            defensor.personatges.getBaralla.shift();
-        }
 
-        if (defensor.personatges.getBaralla.length === 0) {
-            console.log("Ha perdut! El joc acaba");
-            return;
-        }
+        this._view.animateAttack(attackerIsPlayer1, aleatoriAt, aleatoriDef, dany, () => {
+            // aplica el mal i no deixa que el valor sigui negatiu 
+            personatgeDefensor.vida = Math.max(0, personatgeDefensor.vida - dany);
 
-        this._joc.torn = defensor;
+            // la carta mor quan arribi al 0 de vida
+            if (personatgeDefensor.vida === 0) {
+                defensor.personatges.getBaralla.splice(aleatoriDef, 1);
+            }
 
-        this._view.render(this._joc);
+            if (defensor.personatges.getBaralla.length === 0) {
+                console.log("Ha perdut! El joc acaba");
+                return;
+            }
+
+            this._joc.torn = defensor;
+            this._view.render(this._joc);
+        });
     }
 }   

@@ -9,12 +9,10 @@ export class View {
     private _divPlayer2: HTMLDivElement;
 
     // Marcador punts
-    private _divPlayer1Points: HTMLDivElement;
-    private _divPlayer2Points: HTMLDivElement;
+
 
     // Contador partides guanyades
-    private _divMatchesWonPlayer1: HTMLDivElement;
-    private _divMatchesWonDealer2: HTMLDivElement;
+
 
     // Botons
     private _btn1: HTMLButtonElement;
@@ -27,10 +25,7 @@ export class View {
         this._btn1 = document.getElementById("btn1") as HTMLButtonElement;
         this._btn2 = document.getElementById("btn2") as HTMLButtonElement;
         this._btnLluitar = document.getElementById("btnLluitar") as HTMLButtonElement;
-        this._divPlayer1Points = document.getElementById("divPlayer1Points") as HTMLDivElement;
-        this._divPlayer2Points = document.getElementById("divPlayer2Points") as HTMLDivElement;
-        this._divMatchesWonPlayer1 = document.getElementById("divMatchesWonPlayer1") as HTMLDivElement;
-        this._divMatchesWonDealer2 = document.getElementById("divMatchesWonPlayer2") as HTMLDivElement;
+
     }
 
     // Getters per als botons 
@@ -62,8 +57,11 @@ export class View {
     private renderPersonatges(Characters: characters[], divContainer: HTMLElement): void {
         divContainer.innerHTML = " ";
 
-        Characters.forEach((character) => {
+        Characters.forEach((character, idx) => {
             const el = this.renderPersonatge(character);
+            el.dataset.index = idx.toString();
+            // mark which player this card belongs to (1 or 2)
+            el.dataset.player = divContainer === this._divPlayer1 ? '1' : '2';
             divContainer.appendChild(el);
         });
 
@@ -95,19 +93,42 @@ export class View {
         return el;
     }
 
-    /*
-    getVidaDisplay(vida: number): string{
-        
-        return vida.toString();
-    }
-    getAtacDisplay(atac: number): string {
+    // Animar ataque entre cartas: attackerIsPlayer1 indica qué jugador ataca,
+    // attackerIndex y defenderIndex son índices dentro de sus baralles.
+    public animateAttack(attackerIsPlayer1: boolean, attackerIndex: number, defenderIndex: number, damage: number, callback: () => void): void {
+        const attackerDiv = attackerIsPlayer1 ? this._divPlayer1 : this._divPlayer2;
+        const defenderDiv = attackerIsPlayer1 ? this._divPlayer2 : this._divPlayer1;
 
-        return atac.toString();
-    }
-    getDefensaDisplay(defensa: number): string {
+        const attackerEl = attackerDiv.querySelector(`.character[data-index="${attackerIndex}"]`) as HTMLElement;
+        const defenderEl = defenderDiv.querySelector(`.character[data-index="${defenderIndex}"]`) as HTMLElement;
 
-        return defensa.toString();
+        if (!attackerEl || !defenderEl) {
+            callback();
+            return;
+        }
+
+        // small translate to indicate attack direction
+        attackerEl.style.transition = 'transform 20s ease';
+        attackerEl.style.transform = attackerIsPlayer1 ? 'translateX(20px) scale(1.03)' : 'translateX(-20px) scale(1.03)';
+
+        // defender hit effect
+        defenderEl.classList.add('hit');
+
+        // damage label
+        const dmg = document.createElement('div');
+        dmg.classList.add('damage-label');
+        dmg.textContent = `-${damage}`;
+        defenderEl.appendChild(dmg);
+
+        const totalDuration = 1400;
+        setTimeout(() => {
+            attackerEl.style.transform = '';
+            attackerEl.style.transition = '';
+            defenderEl.classList.remove('hit');
+            if (dmg.parentElement) dmg.parentElement.removeChild(dmg);
+            callback();
+        }, totalDuration);
     }
-    */
+
 
 }
